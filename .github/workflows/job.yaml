@@ -4,7 +4,7 @@ jobs:
     build:
         runs-on: ubuntu-latest
         steps:
-            - users: actions/checkout@v2
+            - uses: actions/checkout@v2
             - run: docker-compose -f docker-compose.yaml up -d
             - run: docker exec micro-api-app dockerize -timeout=200s -wait=http://localhost:3000/api
             - run: docker exec micro-api-app npm run test
